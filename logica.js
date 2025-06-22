@@ -27,6 +27,7 @@ telaInicial = document.querySelector(".tela-inicial")
 telaPergunta = document.querySelector(".tela-pergunta")
 telaAcertou = document.querySelector(".tela-acertou")
 telaErrou = document.querySelector(".tela-errou")
+telaGanhou = document.querySelector(".tela-ganhou")
 
 botaoIniciar = document.querySelector(".iniciar")
 botaoIniciar.addEventListener("click", iniciarJogo)
@@ -42,7 +43,11 @@ perguntaAtual = 0
 
 telaAcertou.addEventListener("click", () => {
   telaAcertou.style.display = "none"
-  iniciarJogo()
+  if (perguntaAtual == 4)  {
+    mostrarGanhou()
+  } else {
+    iniciarJogo()
+  }
 })
 
 telaErrou.addEventListener("click", () => {
@@ -51,6 +56,13 @@ telaErrou.addEventListener("click", () => {
   perguntaAtual = 0
 })
 
+telaGanhou.addEventListener("click", () => {
+  telaGanhou.style.display = "none"
+  telaInicial.style.display = "block"
+  perguntaAtual = 0
+})
+
+  
 botao0.addEventListener("click", () => {
   if (objPergunta.correta == 0) {
     mostrarAcertou()
@@ -126,5 +138,8 @@ function mostrarErrou() {
 }
 
 function mostrarGanhou() {
-  tela
+  telaGanhou.style.display = "block"
 }
+
+
+
